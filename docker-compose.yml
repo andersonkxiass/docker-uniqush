@@ -4,18 +4,16 @@ services:
 
     uniqush:
         container_name: uniqush-server
-        image: andersonkxiass:uniqush-server
+        image: uniqush-server
         build:
             context: ./
         environment:
+            # this is the default, but let's be explicit here
             UNIQUSH_DATABASE_HOST: "redis"
         ports:
             - 9898:9898
         depends_on:
             - redis
-        restart: always
-
     redis:
-        container_name: uniqush-redis
-        image: redis:alpine
-        restart: always
+        container_name: redis
+        image: redis

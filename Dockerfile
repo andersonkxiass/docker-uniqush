@@ -10,7 +10,7 @@ WORKDIR /opt/uniqush
 COPY uniqush-push.conf ./
 
 ADD https://github.com/uniqush/uniqush-push/releases/download/${UNIQUSH_VERSION}/uniqush-push_${UNIQUSH_VERSION}_amd64.deb /tmp/
-RUN dpkg -i /tmp/uniqush-push_${UNIQUSH_VERSION}_amd64.deb && rm /tmp/uniqush-push_${UNIQUSH_VERSION}_amd64.deb && mv /etc/uniqush/uniqush-push.conf /etc/uniqush/uniqush-push.conf.dpkg-orig
+RUN dpkg -i /tmp/uniqush-push_${UNIQUSH_VERSION}_amd64.deb && rm /tmp/uniqush-push_${UNIQUSH_VERSION}_amd64.deb 
 
 RUN apt-get -q update && \
     apt-get -q -y --no-install-recommends install \
